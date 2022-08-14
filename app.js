@@ -3,9 +3,10 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-const pool =- requre("./db");
+var pool = require('./db.js');
 var initialLoginRouter = require('./routes/initialLogin');
 var rsvp = require('./routes/rsvp');
+var cors = require("cors")
 
 var app = express();
 
@@ -19,6 +20,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(cors())
 
 app.use('/login', initialLoginRouter);
 app.use('/rsvp', rsvp);
