@@ -5,7 +5,7 @@ const pool = new Pool({
     database:process.env.database,
     host:process.env.host,
     port:process.env.port,
-    ssl: true
+    ssl: { rejectUnauthorized: false }
 });
 
 
