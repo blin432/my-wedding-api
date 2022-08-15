@@ -4,9 +4,14 @@ const pool = new Pool({
     password:process.env.password,
     database:process.env.database,
     host:process.env.host,
-    port:process.env.port
-})
+    port:process.env.port,
+    ssl: true
+});
 
+
+pool.connect(function () {
+    console.log("connected");
+});
 // let connString = process.env.DATABASE_URL 
 // const { Pool } = require('pg');
 // console.log('process',process.env.DATABASE_URL);
