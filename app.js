@@ -6,6 +6,7 @@ var logger = require('morgan');
 var pool = require('./db.js');
 var initialLoginRouter = require('./routes/initialLogin');
 var rsvp = require('./routes/rsvp');
+var home = require('./routes/home');
 var cors = require("cors")
 const port = 8080;
 var app = express();
@@ -24,6 +25,7 @@ app.use(cors())
 
 app.use('/login', initialLoginRouter);
 app.use('/rsvp', rsvp);
+app.use('/', home);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -40,6 +42,8 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+
 
 app.listen(process.env.PORT || this.port, () => console.log(`example app listening at ${port}`))
 
