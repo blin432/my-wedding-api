@@ -3,19 +3,14 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-
+var pool = require('./db.js');
 var initialLoginRouter = require('./routes/initialLogin');
 var rsvp = require('./routes/rsvp');
 var cors = require("cors")
 const port = 8080;
 var app = express();
 
-let connString = process.env.DATABASE_URL 
-const { Pool } = require('pg');
 
-const pool = new Pool({
-  connectionString : connString
-});
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
